@@ -1,12 +1,28 @@
 import React, { Component } from "react";
 
 class Ciao extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isHi: true,
+        };
+    }
+    handleBtnSwitch = () => {
+        const { isHi } = this.state;
+        this.setState({ isHi: !isHi });
+    };
     render() {
-        const{classStyle, name,isHi}=this.props;
-        const word = isHi ? "Hi" : "bye";
+        const { isHi } = this.state;
+        const { classStyle, name } = this.props;
+
         return (
-            <div >
-                <h2 className={classStyle}>{word}, {name ?? "anonim"} </h2>
+            <div className={classStyle}>
+                <h2>
+                    {isHi ? "hi" : "bye"} {name ?? "anonim"}{" "}
+                </h2>
+                <button onClick={this.handleBtnSwitch}>
+                    {isHi ? "bye" : "hi"}
+                </button>
             </div>
         );
     }
