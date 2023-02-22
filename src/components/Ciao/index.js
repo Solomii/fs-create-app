@@ -8,17 +8,22 @@ class Ciao extends Component {
         };
     }
     handleBtnSwitch = () => {
-        const { isHi } = this.state;
+        const { isHi} = this.state;
         this.setState({ isHi: !isHi });
+        // if(!isHi) {
+        //     return <p> id:{id} Bye, name ??"anonim"</p>
+        // }
     };
     render() {
         const { isHi } = this.state;
-        const { classStyle, name } = this.props;
+        const { classStyle, name, id } = this.props;
 
         return (
             <div className={classStyle}>
                 <h2>
-                    {isHi ? "hi" : "bye"} {name ?? "anonim"}{" "}
+                    id:{id}
+                    <br></br>
+                    {isHi ? "Hi" : "Bye"} {name ?? "anonim"}{" "}
                 </h2>
                 <button onClick={this.handleBtnSwitch}>
                     {isHi ? "bye" : "hi"}
