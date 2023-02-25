@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CiaoButton from "../CiaoButton";
 
 class Ciao extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class Ciao extends Component {
         };
     }
     handleBtnSwitch = () => {
-        const { isHi} = this.state;
+        const { isHi } = this.state;
         this.setState({ isHi: !isHi });
         // if(!isHi) {
         //     return <p> id:{id} Bye, name ??"anonim"</p>
@@ -25,9 +26,7 @@ class Ciao extends Component {
                     <br></br>
                     {isHi ? "Hi" : "Bye"} {name ?? "anonim"}{" "}
                 </h2>
-                <button onClick={this.handleBtnSwitch}>
-                    {isHi ? "bye" : "hi"}
-                </button>
+                <CiaoButton onClick={this.handleBtnSwitch} direction={isHi} />
             </div>
         );
     }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CiaoList from "../CiaoList";
+import CiaoSortButton from "../CiaoSortButton";
 
 class CiaolSection extends Component {
     constructor(props) {
@@ -56,21 +57,30 @@ class CiaolSection extends Component {
     };
 
     render() {
-        const { users, isDirectGrowById, isDirectGrowByFirstName, isDirectGrowByLastName} = this.state;
+        const {
+            users,
+            isDirectGrowById,
+            isDirectGrowByFirstName,
+            isDirectGrowByLastName,
+        } = this.state;
         console.log(users);
         return (
             <>
-                <button onClick={this.sortById}>
-                    Sort by id {isDirectGrowById ? "gorowth" : "decrease"}
-                </button>
-                <button onClick={this.sortByFirstName}>
-                    Sort by name
-                    {isDirectGrowByFirstName ? "gorowth" : "decrease"}
-                </button>
-                <button onClick={this.sortByLastName}>
-                    Sort by name
-                    {isDirectGrowByLastName ? "gorowth" : "decrease"}
-                </button>
+                <CiaoSortButton
+                    onClick={this.sortById}
+                    title="Sort by id"
+                    direction={isDirectGrowById}
+                />
+                <CiaoSortButton
+                    onClick={this.sortByFirstName}
+                    title="Sort by name"
+                    direction={isDirectGrowByFirstName}
+                />
+                <CiaoSortButton
+                    onClick={this.sortByLastName}
+                    title="Sort by name"
+                    direction=  {isDirectGrowByLastName}
+                />
                 {/* <HeandingH1
                     classStyle="title"
                     title="title"
@@ -84,7 +94,7 @@ class CiaolSection extends Component {
                 <Ciao classStyle="ciao__welcome " name={this.state.users[2].firstName}  />
                 <Ciao classStyle="ciao__welcome " name={this.state.users[3].firstName}  />
                 <Ciao classStyle="ciao__welcome " /> */}
-         <CiaoList users={users}/>
+                <CiaoList users={users} />
             </>
         );
         // return React.createElement(
