@@ -6,18 +6,20 @@ import "./App.css";
 // import UserSection from './components/UserSection';
 // import FormClass from './components/forms2/FormClass/index';
 import Ciao from "./components/Ciao";
+import UserCard from "./components/UserSection/UserCard";
 
 const App = (props) => {
     const user = {
         id: 1,
         firstName: "Tom",
         lastName: "Test",
+        isSelected:false
     };
     return (
         <>
-            {/* <CiaolSection />
-            <StopWatch/>
-            <UserSection/> */}
+            {/* <CiaolSection /> */}
+            {/* <StopWatch/> */}
+            {/* <UserSection/>  */}
             {/* <SignInFrom/> */}
             {/* <FormClass/> */}
             <Ciao
@@ -25,6 +27,7 @@ const App = (props) => {
                 name={user.firstName}
                 id={user.id}
             />
+            <UserCard user={user}/>
         </>
     );
 };
