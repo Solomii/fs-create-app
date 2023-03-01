@@ -57,7 +57,6 @@ class StopWatch extends Component {
                 <button className={styles.btn}  onClick={this.stop}>stop</button>
                 <button className={styles.btn}  onClick={this.resume}>resume</button>
                 </div>
-            
             </article>
         );
     }

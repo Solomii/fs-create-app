@@ -35,7 +35,7 @@ UserCard.defaultProps = {
     userSelector:()=>{}
 };
 
-const userShape = PropTypes.shape({
+export const userShape = PropTypes.shape({
     id: PropTypes.number.isRequired,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
