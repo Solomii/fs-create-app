@@ -1,0 +1,41 @@
+// @import "./../../common/styles";
+@use "/src/common/styles/colors" as *;
+@use "/src/common/styles/_breackpoints" as bp;
+@use "/src/common/styles/mixins" as mx;
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    min-width: 300px;
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
+    background-color: $color-main;
+    color: $color-text;
+    > * {
+        text-align: center;
+    }
+
+    .btn {
+        width: 150px;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: $color-text;
+        color: $color-main;
+        @include mx.border-radius(20px);
+        border-radius: 20px;
+        border: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@media screen and (min-width: bp.$sm) {
+    .box {
+      @include mx.border-radius(20px);
+    }
+}

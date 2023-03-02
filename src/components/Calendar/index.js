@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { format,add,startOfMonth } from "date-fns";
+import styles from  "./Calendat.module.scss"
 
 class Calendar extends Component {
     constructor(props) {
@@ -21,16 +22,14 @@ class Calendar extends Component {
     render() {
         const { date } = this.state;
         return (
-            <div>
-               Calenday
-            
-               <p>  день тажня з якого почався місяць: {format(startOfMonth(date), "EEEE" )}
+            <div className={styles.box}>
+               <p className={styles.content}>  день тажня з якого почався місяць: {format(startOfMonth(date), "EEEE" )}
                </p>
-                <p>
+                <p className={styles.content}>
                     {format(date, "'Date:' EEEE, dd LLLL 'Time:' HH:mm:ss")}
                 </p>
-                <button onClick={this.addDay}>add 1 day</button>
-                <button onClick={this.addMonth}>add 1 Month</button>
+                <button className={styles.btn} onClick={this.addDay}>add 1 day</button>
+                <button className={styles.btn}  onClick={this.addMonth}>add 1 Month</button>
             </div>
         );
     }

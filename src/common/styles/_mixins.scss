@@ -1,0 +1,9 @@
+@mixin border-radius($r){
+  border-radius:$r;
+}
+
+@mixin flex($flex,$fdir,$jc) {
+  display:$flex;
+  flex-direction:$fdir;
+  justify-content: $jc;
+}
