@@ -1,0 +1,17 @@
+@use "/src/common/styles/breackpoints" as *;
+$space:20px;
+
+.box {
+  background-color: pink;
+  max-width: 300px;
+  margin: auto;
+  @media screen  and (max-width:$sm){
+    max-width: $sm - $space;
+  }
+  @media screen  and (max-width:$md){
+    max-width:  $md - $space;
+  }
+  @media screen  and (max-width:$lg){
+    max-width: $lg - $space;
+  }
+}

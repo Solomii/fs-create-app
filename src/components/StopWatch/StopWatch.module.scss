@@ -1,6 +1,7 @@
 @use "/src/common/styles/colors" as *;
 @use "/src/common/styles/_breackpoints" as bp;
 @use "/src/common/styles/mixins" as mx;
+$r:20px;
 
 .container {
   // display: flex;
@@ -15,7 +16,7 @@
 
   background-color: $color-main;
   color: $color-text;
-  @include mx.border-radius(20px);
+  @include mx.border-radius($r);
 
   text-align: center;
   .boxBtn {
@@ -33,7 +34,7 @@
 
   @media screen and (min-width: bp.$sm) {
     .box {
-      @include mx.border-radius(20px);
+      @include mx.border-radius($r);
     }
 }
 }
