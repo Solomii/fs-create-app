@@ -1,0 +1,13 @@
+@use '/src/common/styles/template' as *;
+
+.article{
+  padding: 15px;
+}
+
+.light {
+  @extend %light;
+}
+
+.dark {
+  @extend %dark;
+}

@@ -1,0 +1,20 @@
+.form {
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & > * {
+      margin-top: 10px;
+      font-size: 1.2em;
+  }
+
+  .error {
+    margin: 5px;
+    color: red;
+  }
+}
+
+

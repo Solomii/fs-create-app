@@ -5,6 +5,8 @@ import { getRandomUsers } from "../../api";
 import UserLoadList from './UsersLoadList';
 
 import Paginate from '../Paginate ';
+import{configRandomUser} from "../../configs"
+// import ControlAmount from "./ControlAmount";
 
 class UserLoader extends Component {
   constructor(props) {
@@ -14,14 +16,17 @@ class UserLoader extends Component {
       isPending: false,
       error: null,
       currentPage: 1,
+      currentResult:configRandomUser.AMOUNT,
+      selectNation:configRandomUser.NATIONALITY,  
     };
   }
 
+
   load = () => {
-    const { currentPage } = this.state;
+    const { currentPage, currentResult } = this.state;
     this.setState({ isPending: true });
-    getRandomUsers({page:currentPage})
-      .then((data) => this.setState({ users: data.results }))
+    getRandomUsers({page:currentPage, results:currentResult})
+      .then((data) => this.setState({ users: data.results, error:null }))
       .catch((error) => this.setState({ error }))
       .finally(() => this.setState({ isPending: false }));
   };
@@ -31,7 +36,8 @@ class UserLoader extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.currentPage !== prevState.currentPage) {
+    const {currentPage, currentResult} = this.state;
+    if (currentPage !== prevState.currentPage || currentResult !== prevState.currentResult) {
       this.load();
     }
   }
@@ -45,8 +51,20 @@ class UserLoader extends Component {
   handleNextBtn = () =>
     this.setState((state) => ({ currentPage: state.currentPage + 1 }));
  
+
+    // setCheckedInput(event){
+    //   console.log(event.target.value)
+    // }
+
+   setCheckedResult = (value) => this.setState({currentResult:value});
+
+     
+   setSelectedOption = ({target:{value}}) => {
+    this.setState({selectNation:value});
+  }
+ 
     render() {
-        const { users, isPending, error,currentPage } = this.state;
+        const { users, isPending, error,currentPage,currentResult, selectNation } = this.state;
         if (error) {
             return <h4>error!</h4>;
         }
@@ -56,6 +74,17 @@ class UserLoader extends Component {
         return (
             <section>
                 <h2>Users List</h2>
+                {/* додати селект з виборам національності */}
+                {/* додати чекбокс з вибором статті */}
+
+                <select value={selectNation} style={{padding:" 5px 15px", margin:"10px"}} 
+                 onChange={this.setSelectedOption}>
+                  {selectNation.map((nat) =>(  <option value="" style={{padding:"10px"}}>{nat}</option>))}
+                </select>
+                {/* <ControlAmount amounts={[5,10,15]}
+                setCheckedResult={this.setCheckedResult}
+                currentResult={currentResult}
+              /> */}
                  <Paginate 
                  currentPage={currentPage}
                  handlePrevBtn ={this.handlePrevBtn}
