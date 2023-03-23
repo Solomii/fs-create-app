@@ -1,13 +1,11 @@
 import React from "react";
 
-const Error= {
-  render() {
-    return(
-      <div>
-      <img scr="" alt="mistake"></img>
+const Error = () => {
+  return (
+    <div>
+      <img src="images/mistake.webp" alt="mistake" style={{width:'100%'}}/>
     </div>
-    ) 
-  }
-}
+  );
+};
 
-export default Error; 
+export default Error;

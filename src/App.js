@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import "./App.css";
+// import React, { useState } from "react";
+// import "./App.css";
+// import HomePage from "./components/HomePage";
 // import Calendar from "./components/Calendar";
 // import HeandingH1 from "./components/HeadingH1";
 // import SignInFrom from "./components/forms/SingInForm";
@@ -17,14 +18,15 @@ import "./App.css";
 // import UserLoader from './components/UsersLoader/index';
 // import UserLoader from "./components/UsersLoader";
 
-
 // import Tree from "./components/Tree";
 // import Header from "./components/Header";
 // import { UserContext, ThemeContext } from "./contexts";
 // import CONSTANTS from "./constants";
 
+// import LearnHooks from "./components/LearnHooks";
+// import StopWatchHooks from "./components/StopWatchHooks";
 
-import LoginForm from "./components/forms/LoginForm";
+// import LoginForm from "./components/forms/LoginForm";
 // const {THEMES} = CONSTANTS;
 
 // // const ImageWrapper = () => {};
@@ -81,7 +83,6 @@ import LoginForm from "./components/forms/LoginForm";
 //     // );
 // // };
 
-
 // class App extends Component {
 //   constructor(props) {
 //     super(props);
@@ -108,12 +109,55 @@ import LoginForm from "./components/forms/LoginForm";
 //   }
 // }
 
+// const App = () => {
+//     // const [isVisible, setIsVisible] = useState(true);
+
+//     // const handleClick = () => {
+//     //     setIsVisible(!isVisible);
+//     // };
+
+//     return (
+//         <div>
+//             {/* <LoginForm/> */}
+
+//             {/* <button onClick={handleClick}>switch visible</button>
+//             {isVisible ? <LerarnHooks /> : isVisible} */}
+
+//             {/* <StopWatchHooks />  */}
+//             <HomePage/>
+           
+//         </div>
+        
+//     );
+// };
+
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import { UserContext, ThemeContext } from "./contexts";
+import CONSTANTS from "./constants";
+import { useClicker } from "./hooks";
+const {THEMES} = CONSTANTS;
+
 const App = () => {
+  const [user] = useState({
+    id: 4,
+    firstName: "Brad",
+    lastName: "Pitt",
+  });
+  const [theme, setTheme] = useState(THEMES.LIGHT);
   return (
-    <div>
-      <LoginForm/>
-    </div>
+    <ThemeContext.Provider value={[theme, setTheme]}>
+      <UserContext.Provider value={user}>
+      <p>clicker count = {useClicker()}</p>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </BrowserRouter>
+      </UserContext.Provider>
+    </ThemeContext.Provider>
   );
-}
+};
 
 export default App;

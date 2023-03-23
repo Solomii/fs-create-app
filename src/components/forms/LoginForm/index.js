@@ -1,11 +1,13 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import { SIGN_IN_SCHEMA } from "./../../../utils/validatoinSchemas";
 import styles from "./LoginFrom.module.scss";
+import InputWrapper from "../InputWrapper";
 
 const initialValues = {
     email: "",
     password: "",
+    gander: "",
 };
 
 const LoginForm = (props) => {
@@ -33,7 +35,7 @@ const LoginForm = (props) => {
 
                     // </form>
                     <Form className={styles.form}>
-                        <Field type="email" name="email" placeholder="email" />
+                        {/* <Field type="email" name="email" placeholder="email" />
                         <ErrorMessage
                             name="email"
                             conponent="div"
@@ -48,8 +50,22 @@ const LoginForm = (props) => {
                             name="password"
                             conponent="div"
                             className={styles.error}
+                        /> */}
+                        <InputWrapper
+                            name="email"
+                            type="email"
+                            placeholder="Your eamil"
                         />
-                        <Field type="submit" value="Send" />
+                        <InputWrapper
+                            name="password"
+                            type="password"
+                            placeholder="Your password"
+                        />
+                        <InputWrapper name="mail" type="radio"
+                        value="mail" />
+                        <InputWrapper name="female" type="radio" 
+                        value="female" />
+                        <input type="submit" value="Send" />
                     </Form>
                 );
             }}
