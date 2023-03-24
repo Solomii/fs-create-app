@@ -1,5 +1,3 @@
-
-
 import React, { useContext, useState, useCallback, useMemo } from "react";
 import { ThemeContext } from "../contexts";
 import Calendar from "../components/Calendar";
